@@ -1,9 +1,28 @@
-;;; auto-sort-mode --- Summary
+;;; auto-sort-mode.el --- Automatically sort lines between two delimiters -*- lexical-binding: t; -*-
+;; Copyright 2023 Rob Weir
+
+;; Author: Rob Weir <rweir@ertius.org>
+;; URL: https://github.com/rweir/auto-sort-mode
+;; Version: 0.1
+;; Keywords: sorting, sort, matching, tools
+;; Package-Requires: ((emacs "24.1"))
+
 ;;; Commentary:
 ;; Sort lines between two delimiters.
+;; example:
+;; <!-- { sort-start } -->
+;; A
+;; B
+;; C
+;; <!--{ sort-end } -->
+;; /example
+;;
+;; Note, the delimiters don't have to be the only thing on the line,
+;; or at the beginning, so can be probably commented out for the
+;; purposes of the language it's embedded in.
 
 ;;; Code:
-(defun sort-between-delimiters ()
+(defun auto-sort-between-delimiters ()
   "Sort the lines between two markers.
 
 Specifically, the bits between '<!-- { sort-start } -->' and
@@ -27,7 +46,8 @@ Specifically, the bits between '<!-- { sort-start } -->' and
   (add-hook 'write-contents-functions
       (lambda()
         (save-excursion
-          (sort-between-delimiters)))))
+          (auto-sort-between-delimiters)))))
 
-(provide 'auto-sort--mode)
+;;;###autoload
+(provide 'auto-sort-mode)
 ;;; auto-sort-mode.el ends here
