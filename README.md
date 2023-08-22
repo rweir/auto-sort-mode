@@ -25,7 +25,7 @@ The package also provides an `interactive` function `(sort-between-delimiters)` 
 
 ## Enabling via file vars
 
-To have Emacs apply this minor mode to a file on open, add a line like at the top or bottom of the file:
+To have Emacs apply this minor mode to a file on open, add a line like at the top of the file (or use the separate syntax for the bottom):
 
 ```text
 # -*- eval: (auto-sort-mode 1); -*-
