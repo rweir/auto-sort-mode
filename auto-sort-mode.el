@@ -22,6 +22,7 @@
 ;; purposes of the language it's embedded in.
 
 ;;; Code:
+
 (defun auto-sort-between-delimiters ()
   "Sort the lines between two markers.
 
@@ -40,6 +41,9 @@ Specifically, the bits between '<!-- { sort-start } -->' and
           ;; Sort the lines between the start and end markers
           (sort-lines nil start end))))))
 
+;;;; Commands
+
+;;;###autoload
 (define-minor-mode auto-sort-mode
   "Automatically apply `sort-between-delimiters` to this file on save."
   :lighter " AS"
@@ -47,6 +51,8 @@ Specifically, the bits between '<!-- { sort-start } -->' and
       (lambda()
         (save-excursion
           (auto-sort-between-delimiters)))))
+
+;;;; Footer
 
 ;;;###autoload
 (provide 'auto-sort-mode)
