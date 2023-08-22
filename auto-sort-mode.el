@@ -23,6 +23,7 @@
 
 ;;; Code:
 
+;;;###autoload
 (defun auto-sort-between-delimiters ()
   "Sort the lines between two markers.
 
