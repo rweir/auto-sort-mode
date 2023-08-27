@@ -5,17 +5,18 @@ A minor mode for automatically sorting a portion of a file, delimited like this:
 ```text
 some unsorted text
 
-<!-- { sort-start } -->
+<!-- { auto-sort-mode.el start } -->
 a
 b
 c
 d
-<!--{ sort-end } -->
+<!-- { auto-sort-mode.el end } -->
 
 other unsorted text
 ```
 
-The delimiters were chosen to match those of the VSCode extension [Scoped Sort](https://marketplace.visualstudio.com/items?itemName=karizma.scoped-sort).
+It's inspired by the VSCode extension [Scoped
+Sort](https://marketplace.visualstudio.com/items?itemName=karizma.scoped-sort).
 
 Enabling the minor mode automatically sorts the lines between the delimiters on save.
 
