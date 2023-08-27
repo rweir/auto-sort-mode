@@ -24,7 +24,7 @@
 
 ;;; Code:
 
-(defgroup auto-sort-mode nil "Automatically sort lines between two delimiters."
+(defgroup auto-sort nil "Automatically sort lines between two delimiters."
   :group 'text
   :prefix "auto-sort-mode-")
 
