@@ -1,5 +1,6 @@
 ;;; auto-sort-mode.el --- Automatically sort lines between two delimiters -*- lexical-binding: t; -*-
 ;; Copyright 2023 Rob Weir
+;; SPDX-License-Identifier: MIT
 
 ;; Author: Rob Weir <rweir@ertius.org>
 ;; URL: https://github.com/rweir/auto-sort-mode
