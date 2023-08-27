@@ -49,10 +49,11 @@ Specifically, the bits between '<!-- { sort-start } -->' and
 (define-minor-mode auto-sort-mode
   "Automatically apply `sort-between-delimiters` to this file on save."
   :lighter " AS"
-  (add-hook 'write-contents-functions
-      (lambda()
-        (save-excursion
-          (auto-sort-between-delimiters)))))
+  (if (eq auto-sort-mode t)
+      (add-hook 'write-contents-functions
+                #'auto-sort-between-delimiters)
+    (remove-hook 'write-contents-functions
+                 #'auto-sort-between-delimiters)))
 
 ;;;; Footer
 
