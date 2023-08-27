@@ -29,7 +29,7 @@
   "Sort the lines between two markers.
 
 Specifically, the bits between '<!-- { sort-start } -->' and
-'<!--{ sort-end } -->' (no quotes).  Intended to be compatible with https://marketplace.visualstudio.com/items?itemName=karizma.scoped-sort ."
+'<!--{ sort-end } -->' (no quotes).  Intended to be compatible with <https://marketplace.visualstudio.com/items?itemName=karizma.scoped-sort>."
   (interactive)
   (let (start end)
     (save-excursion
