@@ -11,11 +11,11 @@
 ;;; Commentary:
 ;; Sort lines between two delimiters.
 ;; example:
-;; <!-- { sort-start } -->
+;; <!-- { auto-sort-mode.el start } -->
 ;; A
 ;; B
 ;; C
-;; <!--{ sort-end } -->
+;; <!-- { auto-sort-mode.el end } -->
 ;; /example
 ;;
 ;; Note, the delimiters don't have to be the only thing on the line,
@@ -24,22 +24,34 @@
 
 ;;; Code:
 
+(defgroup auto-sort-mode nil "Automatically sort lines between two delimiters."
+  :group 'text
+  :prefix "auto-sort-mode-")
+
+(defcustom auto-sort-mode-start-delimiter (concat "<!-- { auto-sort-mode.el start } " "-->")
+  "Start delimiter for `auto-sort-mode`."
+  :type '(string))
+
+(defcustom auto-sort-mode-end-delimiter (concat "<!-- { auto-sort-mode.el end } " "-->")
+  "End delimiter for `auto-sort-mode`."
+  :type '(string))
+
 ;;;###autoload
 (defun auto-sort-between-delimiters ()
   "Sort the lines between two markers.
 
-Specifically, the bits between '<!-- { sort-start } -->' and
-'<!--{ sort-end } -->' (no quotes).  Intended to be compatible with <https://marketplace.visualstudio.com/items?itemName=karizma.scoped-sort>."
+Specifically, the bits between '<!-- { auto-sort-mode.el start } -->' and
+'<!-- { auto-sort-mode.el end } -->' (no quotes).  Inspired by <https://marketplace.visualstudio.com/items?itemName=karizma.scoped-sort>."
   (interactive)
   (let (start end)
     (save-excursion
       (goto-char (point-min))
       ;; Search for the starting marker
-      (when (search-forward "<!-- { sort-start } -->" nil t)
+      (when (search-forward auto-sort-mode-start-delimiter nil t)
         (setq start (line-beginning-position 2)) ; line after
         ;; Search for the ending marker
-        (when (search-forward "<!--{ sort-end } -->" nil t)
-          (setq end (line-beginning-position 0)) ; line before
+        (when (search-forward auto-sort-mode-end-delimiter nil t)
+          (setq end (line-beginning-position)) ; this line
           ;; Sort the lines between the start and end markers
           (sort-lines nil start end))))))
 
